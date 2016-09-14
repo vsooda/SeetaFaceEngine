@@ -30,6 +30,7 @@
  */
 
 #include "feat/surf_feature_map.h"
+#include <cmath>
 
 namespace seeta {
 namespace fd {
