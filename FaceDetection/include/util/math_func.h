@@ -100,18 +100,22 @@ class MathFunction {
       dest[i] = (src[i] >= 0 ? src[i] : -src[i]);
   }
 
-  static inline void Square(const int32_t* src, uint32_t* dest, int32_t len) {
-    __m128i x1;
-    const __m128i* x2 = reinterpret_cast<const __m128i*>(src);
-    __m128i* y2 = reinterpret_cast<__m128i*>(dest);
+//  static inline void Square(const int32_t* src, uint32_t* dest, int32_t len) {
+//    __m128i x1;
+//    const __m128i* x2 = reinterpret_cast<const __m128i*>(src);
+//    __m128i* y2 = reinterpret_cast<__m128i*>(dest);
+//
+//    int32_t i;
+//    for (i = 0; i < len - 4; i += 4) {
+//      x1 = _mm_loadu_si128(x2++);
+//      _mm_storeu_si128(y2++, _mm_mullo_epi32(x1, x1));
+//    }
+//    for (; i < len; i++)
+//      *(dest + i) = (*(src + i)) * (*(src + i));
+//  }
 
-    int32_t i;
-    for (i = 0; i < len - 4; i += 4) {
-      x1 = _mm_loadu_si128(x2++);
-      _mm_storeu_si128(y2++, _mm_mullo_epi32(x1, x1));
-    }
-    for (; i < len; i++)
-      *(dest + i) = (*(src + i)) * (*(src + i));
+  static inline void Square(const int32_t* src, uint32_t* dest, int32_t len) {
+    (*dest) = (*src) * (*src);
   }
 
   static inline float VectorInnerProduct(const float* x, const float* y,
